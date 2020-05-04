@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using MySql.Data.MySqlClient;
 
@@ -259,6 +260,7 @@ namespace codonclusterproject
         {
             if (cluster.Count < 3)
                 return false;
+            
             for (int i = 0; i < cluster.Count; i++)
             {
                 for (int j = i + 1; j < cluster.Count; j++)
@@ -280,12 +282,11 @@ namespace codonclusterproject
             double include = 0;
             double minimum = 0;
             double weight = 7;
-            double[,] bestPlace = new double[graph.RemainingNodes.Count + 1, clusters.Length + 1]; //row, col
+            double[,] bestPlace = new double[graph.RemainingNodes.Count, clusters.Length + 1]; //row, col
 
             for (int i = 0; i < bestPlace.GetLength(0); i++)
                 bestPlace[i, 0] = 1000;
-            for (int i = 0; i < clusters.Length; i++)
-                bestPlace[0, i] = ComputeCut(clusters[i], graph) / clusters[i].Count;
+         
 
             for (int i = 0; i < graph.RemainingNodes.Count; i++)
             {
@@ -297,14 +298,14 @@ namespace codonclusterproject
                         include += weight * (clusters[j].Count - 3);
                     clusters[j].Remove(graph.RemainingNodes[i]);
 
-                    bestPlace[i + 1, j + 1] = Math.Min(include, bestPlace[i + 1, j]); 
+                    bestPlace[i, j + 1] = Math.Min(include, bestPlace[i, j]); 
                 }
 
-                minimum = bestPlace[i + 1, clusters.Length];
+                minimum = bestPlace[i, clusters.Length];
 
                 for (int j = clusters.Length; j >= 0; j--)
                 {
-                    if (bestPlace[i + 1, j] > minimum)
+                    if (bestPlace[i, j] > minimum)
                     {
                         clusters[j].Add(graph.RemainingNodes[i]); //i+1 corr to ith chosen node, j+1 corr to cluster j
                         break;
