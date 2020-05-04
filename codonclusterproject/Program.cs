@@ -286,7 +286,6 @@ namespace codonclusterproject
 
             for (int i = 0; i < bestPlace.GetLength(0); i++)
                 bestPlace[i, 0] = 1000;
-         
 
             for (int i = 0; i < graph.RemainingNodes.Count; i++)
             {
@@ -307,17 +306,16 @@ namespace codonclusterproject
                 {
                     if (bestPlace[i, j] > minimum)
                     {
-                        clusters[j].Add(graph.RemainingNodes[i]); //i+1 corr to ith chosen node, j+1 corr to cluster j
+                        clusters[j].Add(graph.RemainingNodes[i]); //i corr to ith chosen node, j+1 corr to cluster j
                         break;
                     }
                 }
-
-
             }
 
             graph.RemainingNodes.Clear();
             return clusters;
         }
+        
         public static double ComputeCut(List<string> cluster, Graph graph)
         {
 
