@@ -15,4 +15,4 @@ of 3-cliques is maximized.  Therefore, my solution passes through the graph and 
 of the remaining nodes, a post-processing routine using dynamic programming selects the most optimal spot. 
 
 I randomized the orientation of the graph, without changing its inherent structure, to allow for the output of multiple optimal cluster sets (f=146). 
-I captured the output of several trials in a MySQL database.
+I captured the output of several trials in a database. 
