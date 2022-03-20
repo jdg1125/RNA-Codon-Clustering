@@ -1,6 +1,6 @@
 RNA Codon Clustering (CSCI 4950 Project)
 
-All 21 amino acids forming the basis of all life on Earth can each be expressed as a cluster of RNA codons. 
+The 21 amino acids forming the basis of all life on Earth can each be expressed as a cluster of RNA codons. 
 An undirected graph can be constructed from all 48 possible RNA codons as nodes, with edges connecting nodes that vary by only one letter. 
 For instance, ACA and ACU would be connected; ACA and UCG would not. 
 
