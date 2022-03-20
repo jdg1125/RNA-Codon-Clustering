@@ -26,7 +26,7 @@ The project integrates with a local MySQL instance to record the outcome of each
 To use the project with your own MySQL instance, create a database named Results_MakeCluster_Algorithm.
 In this database, create a table named Finished_Clusters, with the structure: 
 
-Index VARCHAR(15) | Clusters (VARCHAR(300) | FunctionValue VARCHAR(20)
+Index VARCHAR(15) | Clusters VARCHAR(300) | FunctionValue VARCHAR(20)
 
 Running the app from the CLI, you have the following argument list options: 
 1. No arguments. This will default to a single execution of the algorithm and no database configuration.
